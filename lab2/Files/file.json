@@ -1,0 +1,46 @@
+{
+    "code": {
+        "co_argcount": 0,
+        "co_cellvars": [],
+        "co_code": [
+            116,
+            0,
+            100,
+            1,
+            23,
+            0,
+            83,
+            0
+        ],
+        "co_consts": [
+            null,
+            "ELITE"
+        ],
+        "co_filename": "D:\\PROJECTS\\Python\\Lab2\\Tests\\Objects.py",
+        "co_firstlineno": 27,
+        "co_flags": 67,
+        "co_freevars": [],
+        "co_kwonlyargcount": 0,
+        "co_lnotab": [
+            0,
+            1
+        ],
+        "co_name": "function",
+        "co_names": [
+            "global_obj"
+        ],
+        "co_nlocals": 0,
+        "co_posonlyargcount": 0,
+        "co_stacksize": 2,
+        "co_varnames": []
+    },
+    "globals": {
+        "function": "function<function>",
+        "__name__": "Tests.Objects",
+        "__doc__": null,
+        "__package__": "Tests",
+        "__file__": "D:\\PROJECTS\\Python\\Lab2\\Tests\\Objects.py",
+        "__cached__": "D:\\PROJECTS\\Python\\Lab2\\Tests\\__pycache__\\Objects.cpython-39.pyc",
+        "global_obj": "GLOBAL"
+    }
+}
