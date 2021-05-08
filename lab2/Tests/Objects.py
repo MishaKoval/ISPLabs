@@ -2,19 +2,8 @@ class Objects:
     def __init__(self):
         self.number = 9999
         self.string = "MiKo"
-        self.list = ["Kovalevskiy", 1.44, 666]
+        self.list = [1.2, 'Allo', 465, {'a': 5}]
         self.dict = {"1": 1, "2": "1"}
-
-
-class Test:
-    def __init__(self):
-        self.str = 'TEST'
-        self.number = 5
-
-
-test_obj = Test()
-
-global_obj = 'GLOBAL'
 
 
 def factorial(n):
@@ -24,5 +13,16 @@ def factorial(n):
     return res
 
 
+class Test:
+    def __init__(self):
+        self.str = "TEST"
+        self.number = 5
+
+
+test_obj = Test()
+
+global_obj = "GLOBAL"
+
+
 def function():
-    return global_obj + 'ELITE'
+    return global_obj + "ELITE"
