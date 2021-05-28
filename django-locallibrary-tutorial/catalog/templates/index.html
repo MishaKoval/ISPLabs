@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1><L>Library By MiKo</L></h1>
+<div>
+{% load static %}
+<img src="{% static "images/mikoavatar.jpg" %}" alt="My image" style="width:55px;height:55px;"/>
+</div>  
+
+<p>Информация о библиотеке:</p>
+<ul>
+<li><strong>Книг:</strong> {{ num_books }}</li>
+<li><strong>Экземпляров:</strong> {{ num_instances }}</li>
+<li><strong>Доступных книг:</strong> {{ num_instances_available }}</li>
+<li><strong>Авторов:</strong> {{ num_authors }}</li>
+</ul>
+
+
+<p>Вы посещали этот сайт {{ num_visits }} раз.</p>
+
+{% endblock %}
