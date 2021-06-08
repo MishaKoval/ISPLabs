@@ -1,0 +1,46 @@
+FROM python:3.8.5-alpine as builder
+
+# set project
+WORKDIR /usr/src/finalblog
+COPY ./requirements.txt .
+
+# set env
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# install dependencies
+RUN apk update \
+    && apk add postgresql-dev gcc python3-dev musl-dev \
+    && pip wheel --no-cache-dir --no-deps --wheel-dir  \
+    /usr/src/finalblog/wheels -r requirements.txt
+
+
+FROM python:3.8.5-alpine
+
+#set env
+ENV APP_HOME=/home/finalblog/web
+
+# create app user dir
+RUN mkdir -p /home/finalblog \
+    && mkdir ${APP_HOME} \
+    && mkdir ${APP_HOME}/static \
+    && addgroup -S finalblog  \
+    && adduser -S finalblog -G finalblog
+
+#set project
+WORKDIR ${APP_HOME}
+COPY . ${APP_HOME}
+
+# install dependencies
+COPY --from=builder /usr/src/finalblog/wheels /wheels
+RUN apk update \
+    && apk add libpq \
+    && pip install --no-cache /wheels/*
+
+# set user
+RUN chown -R finalblog:finalblog ${APP_HOME}
+RUN ./manage.py migrate
+USER finalblog
+
+# run entrypoint.sh
+ENTRYPOINT ["/home/finalblog/web/entrypoint.prod.sh"]

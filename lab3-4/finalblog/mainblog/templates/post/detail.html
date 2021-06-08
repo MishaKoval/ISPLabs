@@ -1,0 +1,40 @@
+{% extends "users/base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+{% load static %}
+<header class="masthead" style="background-image: url({% static 'img/post-bg.jpg' %})">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>{{ post.title }}</h1>       {% if post.author.id == request.user.id %}
+            <small><form method="POST"><a href="{% url "remove_post" post.slug%}">Remove</a>
+        <a href="{% url "update_post" post.slug%}">Edit</a>
+            </form></small>
+{% endif %}
+                            <span class="meta">
+                                Posted by
+                                <a href="{% url 'detail_user' post.author.pk %}">{{ post.author }}</a>
+                                on {{ post.published }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <article class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        {{ post.text }}
+                    </div>
+                </div>
+            </div>
+        </article>
+{% endblock %}
+
+
+

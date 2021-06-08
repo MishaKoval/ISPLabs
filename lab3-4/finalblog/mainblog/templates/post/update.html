@@ -1,0 +1,49 @@
+{% extends "users/base.html" %}
+
+{% block title %}Update post{% endblock %}
+
+{% block content %}
+{% load static %}
+<header class="masthead" style="background-image: url({% static 'img/post-bg.jpg' %})">
+<form action="" method="POST">
+    {% csrf_token %}
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h2 style="color:white;">{{ form.title.label }}</h2>
+                            <h2>{{ form.title }}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <article class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <h2>{{ form.text.label }}</h2>
+                        {{ form.text }}
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </article>
+    <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+    <button class="btn btn-primary btn-block" type="submit">Update post</button>
+    </div>
+
+    </div>
+    </div>
+    </form>
+{% endblock %}
+
+
+
+
+
+
+

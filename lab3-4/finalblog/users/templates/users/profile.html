@@ -1,0 +1,78 @@
+{% extends "users/base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+{% load static %}
+<header class="masthead" style="background-image: url({% static 'img/user_page.jpg' %})">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h2 style="color:white;">{{ cur_user.username }}</h2>
+                            <h4>{{ cur_user.first_name }} {{ cur_user.last_name }}</h4>
+                            <h6>Roles:</h6>
+                            {% for role in roles %}
+                                {{ role }},
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+</header>
+<form action="" method="POST">
+    {% csrf_token %}
+        <!-- Post Content-->
+        <article class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div>
+            first name: {{ cur_user.first_name }}
+        </div>
+        <div>
+            last name: {{ cur_user.last_name }}
+        </div>
+        <div>
+            email: {{ cur_user.email }}
+        </div>
+    <div>
+    phone: {{ account.phone }}
+    {% if cur_user == request.user %}
+        <small>
+            <form action="" method="POST">
+                    <a href="{% url 'update_account' cur_user.pk %}">edit</a>
+            </form>
+        </small>
+    {% endif %}
+    </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </article>
+    <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+    <div>
+        <h4>Posts:</h4>
+        {% for post in posts %}
+            <a href = "{% url 'detail_post' post.slug %}">{{ post }}</a>
+            <br>
+        {% endfor %}
+    </div>
+    </div>
+
+    </div>
+    </div>
+    </form>
+{% endblock %}
+
+
+
+
+
+
+

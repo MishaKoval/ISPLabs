@@ -1,0 +1,49 @@
+{% extends "users/base.html" %}
+
+{% block title %}Edit account{% endblock %}
+
+{% block content %}
+
+{% load static %}
+<header class="masthead" style="background-image: url({% static 'img/user_page.jpg' %})">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h2 style="color:white;">{{ request.user.username }}</h2>
+                            <h4>{{ request.user.first_name }} {{ request.user.last_name }}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</header>
+<form action="" method="POST">
+    {% csrf_token %}
+<div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+     {% for message in messages %}
+                    <p id="messages">{{ message }}</p>
+        {% endfor %}
+    <div>
+            Phone: <input type="text" name="phone">
+    </div>
+
+    <p><input type="submit" value="Edit"></p>
+                                   </div>
+                    </div>
+                </div>
+            </div>
+    </form>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
