@@ -1,0 +1,1 @@
+--source Tests/tests.py --name lambda_in_function --file Files/File.json
