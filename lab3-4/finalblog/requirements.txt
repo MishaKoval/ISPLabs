@@ -1,7 +1,7 @@
 asgiref==3.3.4
 attrs==21.2.0
 coverage==5.5
-Django==3.2.3
+Django>=3.2.3
 django-shell-plus==1.1.7
 iniconfig==1.1.1
 packaging==20.9
